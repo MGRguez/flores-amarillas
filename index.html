@@ -758,23 +758,6 @@
           z-index: 100;
         }
 
-        .special-text {
-position: absolute;
-top: 6vh;
-left: 50%;
-transform: translateX(-50%);
-color: #ffdd00;
-font-family: 'Arial', sans-serif;
-font-size: clamp(18px, 4vmin, 36px);
-text-shadow: 0 0 1vmin rgba(255,221,0,.5);
-opacity: 0;
-animation: fadeIn 3s 1s forwards;
-text-align: center;
-width: 90%;
-max-width: 600px;
-line-height: 1.3;
-z-index: 20;
-}
         .music-bar {
           position: fixed;
           left: 50%;
@@ -1010,40 +993,98 @@ z-index: 20;
           margin-right: -30px;
         }
 
-      .firma{
+      .mensaje-container{
+
 position:absolute;
-top:18vh;
+
+top:6vh;
+
 left:50%;
+
 transform:translateX(-50%);
-color:#ffd200;
-font-size:clamp(14px,2.5vmin,22px);
-text-shadow:0 0 1vmin rgba(255,221,0,.6);
-opacity:0;
-animation:fadeIn 3s 2s forwards;
+
 text-align:center;
+
+width:90%;
+
+max-width:600px;
+
+display:flex;
+
+flex-direction:column;
+
+gap:12px;
+
+align-items:center;
+
 z-index:20;
+
+}
+
+
+.special-text{
+
+color:#ffdd00;
+
+font-size:clamp(18px,4vmin,36px);
+
+text-shadow:0 0 1vmin rgba(255,221,0,.5);
+
+opacity:0;
+
+animation:fadeIn 3s 1s forwards;
+
+line-height:1.3;
+
+}
+
+
+.firma{
+
+color:#ffd200;
+
+font-size:clamp(14px,2.5vmin,22px);
+
+text-shadow:0 0 1vmin rgba(255,221,0,.6);
+
+opacity:0;
+
+animation:fadeIn 3s 2s forwards;
+
 }
 
         @media (max-width:600px){
 
-.special-text{
+.mensaje-container{
+
 top:5vh;
+
+}
+
+.special-text{
+
 font-size:20px;
+
 }
 
 .firma{
-top:14vh;
+
 font-size:16px;
+
 }
 
 .music-bar{
-top:auto;
+
 bottom:3vh;
+
 }
 
 .flowers{
+
 transform:scale(.55);
+
 bottom:-8vh;
+
 }
 
 }
@@ -1052,14 +1093,18 @@ bottom:-8vh;
 <body class="not-loaded">
   <div class="night"></div>
   
-  <div class="special-text" id="mensajeEspecial">
+  <div class="mensaje-container">
+
+<div class="special-text" id="mensajeEspecial">
 Aunque la distancia exista,<br>
 tus flores amarillas siempre llegarán 💛
 </div>
 
-  <div class="firma">
+<div class="firma">
 Con cariño,<br>
 Lu Sayre ✨
+</div>
+
 </div>
 
   <div class="yellow-particles">
