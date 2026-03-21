@@ -7,27 +7,65 @@
 <style>
 
 body{
-background:#fffbe6;
-font-family:Arial;
-text-align:center;
+margin:0;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+font-family:'Segoe UI', sans-serif;
+background:linear-gradient(to bottom,#fffbe6,#ffe066);
 overflow:hidden;
 }
 
+/* TARJETA */
+
+.card{
+background:white;
+padding:50px;
+border-radius:30px;
+box-shadow:0px 25px 60px rgba(0,0,0,0.18);
+text-align:center;
+animation:fade 2s ease;
+max-width:420px;
+position:relative;
+z-index:2;
+}
+
+@keyframes fade{
+from{opacity:0; transform:translateY(40px);}
+to{opacity:1; transform:translateY(0);}
+}
+
 h1{
-margin-top:120px;
-color:#f4b400;
-font-size:42px;
+color:#e6a700;
+font-size:38px;
 }
 
 p{
-font-size:22px;
+font-size:21px;
 color:#555;
+margin-top:20px;
 }
+
+/* RAMO ANIMADO */
+
+.bouquet{
+font-size:60px;
+animation:float 3s ease-in-out infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(0px);}
+50%{transform:translateY(-10px);}
+100%{transform:translateY(0px);}
+}
+
+/* FLORES CAYENDO */
 
 .flower{
 position:absolute;
 top:-50px;
-font-size:30px;
+font-size:28px;
 animation:fall linear infinite;
 }
 
@@ -36,27 +74,69 @@ animation:fall linear infinite;
 100%{transform:translateY(100vh)}
 }
 
+.signature{
+margin-top:25px;
+font-size:18px;
+color:#999;
+}
+
+.playBtn{
+margin-top:25px;
+background:#ffd633;
+border:none;
+padding:12px 20px;
+font-size:18px;
+border-radius:15px;
+cursor:pointer;
+}
+
 </style>
 </head>
 
 <body>
 
-<h1 id="titulo">🌻 Para ti</h1>
+<div class="card">
+
+<div class="bouquet">
+💐🌻🌻🌻
+</div>
+
+<h1 id="titulo">Para ti 🌼</h1>
 
 <p>
-Aunque la distancia exista tus flores amarillas siempre llegarán 💛<br>
+Aunque la distancia exista,<br>
+tus flores amarillas siempre llegarán 💛
 </p>
+
+<button class="playBtn" onclick="document.getElementById('music').play()">
+🌻 Toca aquí para escuchar tu canción
+</button>
+
+<div class="signature">
+Con cariño,<br>
+Lu Sayre ✨
+</div>
+
+</div>
+
+
+<audio id="music" loop>
+<source src="https://files.catbox.moe/7m1r7y.mp3" type="audio/mp3">
+</audio>
+
 
 <script>
 
 const params = new URLSearchParams(window.location.search);
-
 const nombre = params.get("nombre");
 
 if(nombre){
 document.getElementById("titulo").innerHTML =
-"🌻 Para ti, " + nombre;
+"Para ti, " + nombre + " 🌼";
 }
+
+
+/* FLORES CAYENDO */
 
 function crearFlor(){
 
@@ -64,7 +144,7 @@ const flor = document.createElement("div");
 
 flor.classList.add("flower");
 
-flor.innerHTML="🌻";
+flor.innerHTML="🌼";
 
 flor.style.left=Math.random()*100+"vw";
 
@@ -74,9 +154,7 @@ flor.style.animationDuration=
 document.body.appendChild(flor);
 
 setTimeout(()=>{
-
 flor.remove()
-
 },10000)
 
 }
