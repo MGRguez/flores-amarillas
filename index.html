@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ramo de Tulipanes Amarillos</title>
+    <title>Flores Amarillas ✨</title>
     <style>
         *,
         *::after,
@@ -1076,21 +1076,245 @@ bottom:6vh;
 }
 
 }
+    
+        /* =========================================================
+           PORTADA DEL REGALO
+        ========================================================= */
+        .gift-cover{
+          position:fixed;
+          inset:0;
+          z-index:9999;
+          display:flex;
+          align-items:center;
+          justify-content:center;
+          padding:24px;
+          text-align:center;
+          background:
+            radial-gradient(circle at 50% 34%, rgba(255, 219, 39, .10), transparent 28%),
+            radial-gradient(circle at 50% 100%, rgba(98, 150, 68, .10), transparent 35%),
+            linear-gradient(180deg, #07111d 0%, #020812 62%, #000 100%);
+          opacity:1;
+          visibility:visible;
+          transition:opacity .9s ease, visibility .9s ease, transform .9s ease, filter .9s ease;
+          overflow:hidden;
+        }
+
+        .gift-cover::before{
+          content:"";
+          position:absolute;
+          inset:0;
+          opacity:.32;
+          pointer-events:none;
+          background-image:
+            radial-gradient(circle, #fff 0 1px, transparent 1.3px),
+            radial-gradient(circle, #ffe66a 0 1px, transparent 1.4px);
+          background-size:83px 83px, 127px 127px;
+          background-position:7px 14px, 36px 61px;
+        }
+
+        .gift-cover.is-opening{
+          opacity:0;
+          visibility:hidden;
+          transform:scale(1.04);
+          filter:blur(5px);
+          pointer-events:none;
+        }
+
+        .gift-cover__content{
+          position:relative;
+          z-index:2;
+          width:min(92vw, 620px);
+          animation:cover-enter 1.2s ease both;
+        }
+
+        .gift-cover__date{
+          margin-bottom:16px;
+          color:#e8cf68;
+          font-size:clamp(11px, 2.4vw, 14px);
+          letter-spacing:.28em;
+          text-transform:uppercase;
+        }
+
+        .gift-cover__title{
+          color:#ffdf19;
+          font-size:clamp(38px, 8vw, 68px);
+          line-height:1.03;
+          font-weight:800;
+          text-shadow:
+            0 0 8px rgba(255, 224, 32, .8),
+            0 0 24px rgba(255, 194, 0, .42);
+        }
+
+        .gift-cover__name{
+          margin-top:24px;
+          color:#fff3a2;
+          font-family:Georgia, "Times New Roman", serif;
+          font-size:clamp(22px, 5vw, 34px);
+          font-style:italic;
+          text-shadow:0 0 15px rgba(255, 221, 56, .28);
+        }
+
+        .gift-cover__name span{
+          color:#ffe035;
+          font-weight:700;
+        }
+
+        .gift-cover__text{
+          width:min(92%, 390px);
+          margin:24px auto 28px;
+          color:rgba(255,255,255,.78);
+          font-size:clamp(14px, 3vw, 17px);
+          line-height:1.7;
+        }
+
+        .gift-cover__button{
+          border:0;
+          outline:0;
+          padding:15px 28px;
+          border-radius:999px;
+          cursor:pointer;
+          color:#211b03;
+          background:linear-gradient(135deg, #e8b900, #fff080);
+          font-size:13px;
+          font-weight:800;
+          letter-spacing:.12em;
+          box-shadow:
+            0 0 15px rgba(255, 214, 21, .28),
+            0 0 35px rgba(255, 199, 0, .12);
+          transition:transform .2s ease, box-shadow .2s ease;
+        }
+
+        .gift-cover__button:hover{
+          transform:scale(1.05);
+          box-shadow:
+            0 0 22px rgba(255, 221, 49, .42),
+            0 0 45px rgba(255, 199, 0, .18);
+        }
+
+        .gift-cover__button:active{
+          transform:scale(.97);
+        }
+
+        .gift-cover__hint{
+          margin-top:15px;
+          color:rgba(255,255,255,.34);
+          font-size:10px;
+          letter-spacing:.2em;
+          text-transform:uppercase;
+        }
+
+        @keyframes cover-enter{
+          from{
+            opacity:0;
+            transform:translateY(18px);
+          }
+          to{
+            opacity:1;
+            transform:translateY(0);
+          }
+        }
+
+        /* Mientras está la portada, el regalo queda oculto y sus animaciones pausadas. */
+        body.regalo-escondido .night,
+        body.regalo-escondido .mensaje-container,
+        body.regalo-escondido .yellow-particles,
+        body.regalo-escondido .shooting-stars,
+        body.regalo-escondido .flowers,
+        body.regalo-escondido .ramo,
+        body.regalo-escondido .music-bar{
+          opacity:0 !important;
+          visibility:hidden !important;
+        }
+
+        body.regalo-escondido .flowers *,
+        body.regalo-escondido .yellow-particle,
+        body.regalo-escondido .shooting-star{
+          animation-play-state:paused !important;
+        }
+
+        body.regalo-abierto .night,
+        body.regalo-abierto .mensaje-container,
+        body.regalo-abierto .yellow-particles,
+        body.regalo-abierto .shooting-stars,
+        body.regalo-abierto .flowers,
+        body.regalo-abierto .music-bar{
+          visibility:visible;
+        }
+
+        /* Texto final un poco más limpio */
+        .mensaje-container{
+          pointer-events:none;
+        }
+
+        .special-text{
+          font-family:Georgia, "Times New Roman", serif;
+          font-weight:600;
+        }
+
+        .firma{
+          font-family:Georgia, "Times New Roman", serif;
+          opacity:0;
+        }
+
+        @media (max-width:600px){
+          .gift-cover{
+            padding:20px;
+          }
+
+          .gift-cover__title{
+            font-size:clamp(36px, 11vw, 52px);
+          }
+
+          .gift-cover__text{
+            margin-top:20px;
+            margin-bottom:24px;
+          }
+        }
+
     </style>
 </head>
-<body class="not-loaded">
+<body class="not-loaded regalo-escondido">
+
+  <!-- PORTADA -->
+  <section class="gift-cover" id="giftCover">
+    <div class="gift-cover__content">
+      <div class="gift-cover__date">21 de septiembre</div>
+
+      <h1 class="gift-cover__title">
+        Feliz Día de las<br>
+        Flores Amarillas
+      </h1>
+
+      <div class="gift-cover__name">
+        Para <span id="nombrePortada">ti</span> ✨
+      </div>
+
+      <p class="gift-cover__text">
+        Tengo un pequeño regalo para ti.<br>
+        Toca el botón y deja que florezca un poquito de magia.
+      </p>
+
+      <button type="button" class="gift-cover__button" id="btnAbrirRegalo">
+        VER TU REGALO
+      </button>
+
+      <div class="gift-cover__hint">toca para descubrirlo</div>
+    </div>
+  </section>
+
+
   <div class="night"></div>
   
   <div class="mensaje-container">
 
 <div class="special-text" id="mensajeEspecial">
-Aunque la distancia exista,<br>
-tus flores amarillas siempre llegarán 💛
+Estas flores amarillas son para ti.<br>
+Que nunca te falten motivos para sonreír<br>
+y un poquito de magia en los días comunes. 💛
 </div>
 
-<div class="firma">
-Con cariño,<br>
-Lu Sayre ✨
+<div class="firma" id="firmaFinal">
+21 de septiembre ✨
 </div>
 
 </div>
@@ -1418,30 +1642,73 @@ Lu Sayre ✨
   </div>
 
   <div class="music-bar">
-    <audio controls loop autoplay>
+    <audio controls loop id="musicaFlores">
       <source src="https://github.com/Baque2005/Organizador/raw/refs/heads/master/Floricienta%20-%20Flores%20Amarillas%20(Official%20Video).mp3" type="audio/mpeg">
       Tu navegador no soporta audio HTML5.
     </audio>
   </div>
 
   <script>
-    document.body.classList.remove('not-loaded');
-    // Espera a que terminen las animaciones de los tulipanes (~2.5s)
-    setTimeout(function() {
-      document.querySelector('.ramo').classList.add('ramo--visible');
-    }, 2500);
+    /* =====================================================
+       NOMBRE PERSONALIZADO
+       Admite las dos formas:
+       ?name=Wen
+       ?nombre=Wen
+    ===================================================== */
+
+    const params = new URLSearchParams(window.location.search);
+    const nombre = (params.get("name") || params.get("nombre") || "").trim();
+
+    if (nombre) {
+      document.getElementById("nombrePortada").textContent = nombre;
+
+      document.getElementById("mensajeEspecial").innerHTML =
+        "Estas flores amarillas son para ti, " + nombre + ".<br>" +
+        "Que nunca te falten motivos para sonreír<br>" +
+        "y un poquito de magia en los días comunes. 💛";
+
+      document.title = "Flores amarillas para " + nombre + " ✨";
+    }
+
+    /* =====================================================
+       ABRIR EL REGALO
+    ===================================================== */
+
+    const btnAbrirRegalo = document.getElementById("btnAbrirRegalo");
+    const giftCover = document.getElementById("giftCover");
+    const musicaFlores = document.getElementById("musicaFlores");
+
+    btnAbrirRegalo.addEventListener("click", function () {
+
+      // La portada empieza a desaparecer.
+      giftCover.classList.add("is-opening");
+
+      // Ahora sí mostramos y activamos el jardín.
+      document.body.classList.remove("regalo-escondido");
+      document.body.classList.remove("not-loaded");
+      document.body.classList.add("regalo-abierto");
+
+      // Intentamos reproducir la canción aprovechando el clic del usuario.
+      // Si el navegador la bloquea o falla la URL, el regalo abre de todas formas.
+      if (musicaFlores) {
+        musicaFlores.play().catch(function () {
+          // El control de audio queda disponible para reproducirla manualmente.
+        });
+      }
+
+      // El ramo inferior aparece después de que florecen los tulipanes.
+      setTimeout(function () {
+        const ramo = document.querySelector(".ramo");
+        if (ramo) {
+          ramo.classList.add("ramo--visible");
+        }
+      }, 2500);
+
+      // Quitamos la portada del flujo al terminar su transición.
+      setTimeout(function () {
+        giftCover.style.display = "none";
+      }, 950);
+    });
   </script>
-
-  <script>
-
-const params = new URLSearchParams(window.location.search);
-const nombre = params.get("nombre");
-
-if(nombre){
-document.getElementById("mensajeEspecial").innerHTML =
-"Para ti, " + nombre + "<br>Aunque la distancia exista,<br>tus flores amarillas siempre llegarán 💛";
-}
-
-</script>
 </body>
 </html>
